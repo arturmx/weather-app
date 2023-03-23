@@ -1,0 +1,165 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+body {
+  background-color: #CCC;
+  font-family: Inter, sans-serif;
+  font-weight: 500;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 500px;
+  margin: auto;
+  border-radius: 32px;
+  position: relative;
+  color: #000;
+}
+.app__bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+}
+.app__form {
+  display: flex;
+  justify-content: center;
+  width: 400px;
+  margin: auto;
+  align-items: center;
+  margin: 60px 0 4px;
+}
+.app__input {
+  font-size: 32px;
+  background-color: transparent;
+  height: 55px;
+  width: 300px;
+  border: 1px solid #FFF;
+  color: #FFF;
+  border-radius: 15px 0 0 15px;
+  text-align: center;
+  outline: none;
+}
+.app__go {
+  height: 57px;
+  width: 57px;
+  border: 1px solid #FFF;
+  display: flex;
+  border-radius: 0 15px 15px 0;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+.app__go svg {
+  height: 50px;
+}
+.app__localtime {
+  margin-top: 20px;
+  font-size: 20px;
+  line-height: 27px;
+}
+.app__switches {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 310px;
+  height: 60px;
+  border: 1px solid #FFF;
+  border-radius: 15px;
+  margin: 40px 0 40px;
+}
+.app__switch {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  border-radius: 15px;
+  cursor: pointer;
+}
+.app__switch-active {
+  background-color: #4084DF;
+  opacity: 1;
+}
+.app__central-icon {
+  width: 128px;
+  height: 128px;
+}
+.app__temperature {
+  font-size: 80px;
+  font-weight: 700;
+  line-height: 101px;
+  height: 80px;
+}
+.app__state {
+  margin-top: 20px;
+}
+.app__other-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 320px;
+  margin-top: 35px;
+}
+.app__indicators {
+  text-align: center;
+}
+.app__indicators svg {
+  width: 24px;
+}
+.app__indicators p {
+  margin-top: 10px;
+}
+
+/*# sourceMappingURL=style.css.map */

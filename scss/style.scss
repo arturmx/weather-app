@@ -1,0 +1,132 @@
+@import './reset';
+
+body {
+    background-color: #CCC;
+    font-family: Inter, sans-serif;
+    font-weight: 500;
+}
+
+.app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 500px;
+    margin: auto;
+    border-radius: 32px;
+    position: relative;
+    color: #000;
+
+    &__bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        height: 100%;
+        width: 100%;
+    }
+
+    &__form {
+        display: flex;
+        justify-content: center;
+        width: 400px;
+        margin: auto;
+        align-items: center;
+        margin: 60px 0 4px;
+    }
+
+    &__input {
+        font-size: 32px;
+        background-color: transparent;
+        height:55px;
+        width:300px;
+        border: 1px solid #FFF;
+        color: #FFF;
+        border-radius: 15px 0 0 15px;
+        text-align: center;
+        outline: none;
+    }
+
+    &__go {
+        height: 57px;
+        width: 57px;
+        border: 1px solid #FFF;
+        display: flex;
+        border-radius: 0 15px 15px 0;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+
+        svg {
+            height: 50px;
+        }
+    }
+
+    &__localtime {
+        margin-top: 20px;
+        font-size: 20px;
+        line-height: 27px;
+
+    }
+
+    &__switches {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        width: 310px;
+        height:60px;
+        border: 1px solid #FFF;
+        border-radius: 15px;
+        margin: 40px 0 40px;
+    }
+
+    &__switch {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        width: 100%;
+        border-radius: 15px;
+        cursor: pointer;
+
+        &-active {
+            background-color: #4084DF;
+            opacity: 1;
+        }
+    }
+
+    &__central-icon {
+        width: 128px;
+        height: 128px;
+    }
+
+    &__temperature {
+        font-size: 80px;
+        font-weight: 700;
+        line-height: 101px;
+        height: 80px;
+    }
+
+    &__state {
+        margin-top: 20px;
+    }
+
+    &__other-info {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        width: 320px;
+        margin-top: 35px;
+    }
+
+    &__indicators {
+        text-align: center;
+
+        svg {
+            width: 24px;
+        }
+
+        p {
+            margin-top: 10px;
+        }
+    }
+}
