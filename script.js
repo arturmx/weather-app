@@ -17,7 +17,7 @@ form.addEventListener('submit', function(e) {
 
   const place = input.value;
 
-  fetch(`http://api.weatherapi.com/v1/current.json?key=db66d43c6d024009b4b123828232203&q=${place}&aqi=yes`)
+  fetch(`http://api.weatherapi.com/v1/forecast.json?key=db66d43c6d024009b4b123828232203&q=${place}&days=3&aqi=yes&alerts=no`)
   .then((response) => response.json())
   .then((data) => {
     console.log(data);
