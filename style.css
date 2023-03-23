@@ -50,7 +50,7 @@ table {
 
 body {
   background-color: #CCC;
-  font-family: Inter, sans-serif;
+  font-family: Sen, sans-serif;
   font-weight: 500;
 }
 
@@ -58,12 +58,12 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 393px;
-  height: 852px;
+  width: 492px;
+  height: 1065px;
   margin: auto;
   border-radius: 32px;
   position: relative;
-  color: #000;
+  color: #FFF;
 }
 .app__bg {
   position: absolute;
@@ -73,13 +73,21 @@ body {
   height: 100%;
   width: 100%;
 }
+.app__h1 {
+  font-size: 40px;
+  font-weight: 500;
+  line-height: 55px;
+  margin-top: 60px;
+}
+.app__edit {
+  margin-top: 10px;
+  cursor: pointer;
+}
 .app__form {
   display: flex;
   justify-content: center;
-  width: 400px;
-  margin: auto;
   align-items: center;
-  margin: 60px 0 4px;
+  margin-top: 60px;
 }
 .app__input {
   font-size: 32px;
@@ -106,9 +114,9 @@ body {
   height: 50px;
 }
 .app__localtime {
-  margin-top: 20px;
   font-size: 20px;
   line-height: 27px;
+  margin: 5px 0 40px;
 }
 .app__central-icon {
   width: 128px;
@@ -116,12 +124,14 @@ body {
 }
 .app__temperature {
   font-size: 80px;
-  font-weight: 700;
-  line-height: 101px;
-  height: 80px;
+  font-weight: 800;
+  line-height: 109px;
 }
 .app__state {
   margin-top: 20px;
+  color: #B9B9B9;
+  font-size: 20px;
+  line-height: 27px;
 }
 .app__other-info {
   display: flex;
@@ -132,15 +142,17 @@ body {
 }
 .app__indicators {
   text-align: center;
+  margin-bottom: 40px;
 }
 .app__indicators svg {
   width: 24px;
-}
-.app__indicators.night path {
-  fill: #fff;
+  fill: #FFF;
 }
 .app__indicators p {
   margin-top: 10px;
+}
+.app__inactive {
+  display: none;
 }
 
 .switches {
@@ -157,11 +169,46 @@ body {
   color: #fff;
   opacity: 0.8;
   border-radius: 12px;
+  font-weight: 400;
 }
 .switches__btn.active {
   background-color: #4084DF;
   opacity: 1;
-  font-weight: 500;
+}
+
+.bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.bottom__h1 {
+  font-size: 25px;
+  line-height: 34px;
+}
+.bottom__wrapper {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  width: 428px;
+  border-radius: 25px;
+  background-color: rgba(64, 132, 223, 0.2);
+  padding: 20px 17px;
+}
+.bottom__day {
+  width: 33%;
+  border-radius: 3px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.bottom__temp {
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 31px;
+  color: #FFF;
+}
+.bottom__date {
+  margin-bottom: 20px;
 }
 
 /*# sourceMappingURL=style.css.map */

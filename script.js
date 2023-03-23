@@ -1,4 +1,5 @@
 const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+const weekDays = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
 
 const form = document.querySelector('.app__form');
 const input = document.querySelector('.app__input');
@@ -10,12 +11,25 @@ const pressure = document.querySelector('.app__pressure');
 const humidity = document.querySelector('.app__humidity');
 const state = document.querySelector('.app__state');
 const stateImg = document.querySelector('.app__central-icon');
-const bg = document.querySelector('.app__bg');
+const h1 = document.querySelector('.app__h1');
+const edit = document.querySelector('.app__edit');
+const futureDate1 = document.querySelector('.bottom__date1');
+const futureDate2 = document.querySelector('.bottom__date2');
+const futureDate3 = document.querySelector('.bottom__date3');
+
+const futureIcon1 = document.querySelector('.bottom__icon1');
+const futureIcon2 = document.querySelector('.bottom__icon2');
+const futureIcon3 = document.querySelector('.bottom__icon3');
+
+const futureTemp1 = document.querySelector('.bottom__temp1');
+const futureTemp2 = document.querySelector('.bottom__temp2');
+const futureTemp3 = document.querySelector('.bottom__temp3');
 
 form.addEventListener('submit', function(e) {
   e.preventDefault();
 
   const place = input.value;
+  // input.value = h1.innerHTML;
 
   fetch(`http://api.weatherapi.com/v1/forecast.json?key=db66d43c6d024009b4b123828232203&q=${place}&days=3&aqi=yes&alerts=no`)
   .then((response) => response.json())
@@ -32,12 +46,18 @@ form.addEventListener('submit', function(e) {
     humidity.innerHTML = data.current.humidity + ' %';
     state.innerHTML = data.current.condition.text;
     stateImg.src = data.current.condition.icon;
-    
-    if (data.current.is_day === 1) {
-      return bg.src = './assets/night-bg.png'
-    }
-    else {
-      return bg.src = './assets/night-bg.png'
-    }
+    futureDate1.innerHTML = data.forecast.forecastday[0].date;
+    futureDate2.innerHTML = data.forecast.forecastday[1].date;
+    futureDate3.innerHTML = data.forecast.forecastday[2].date;
+    futureTemp1.innerHTML = data.forecast.forecastday[0].day.avgtemp_c + '℃';
+    futureTemp2.innerHTML = data.forecast.forecastday[1].day.avgtemp_c + '℃';
+    futureTemp3.innerHTML = data.forecast.forecastday[2].day.avgtemp_c + '℃';
+    futureIcon1.src= data.forecast.forecastday[0].day.condition.icon;
+    futureIcon2.src= data.forecast.forecastday[1].day.condition.icon;
+    futureIcon3.src= data.forecast.forecastday[2].day.condition.icon;
   });
+})
+
+edit.addEventListener("click", function() {
+  form.classList.remove('app__inactive');
 })
