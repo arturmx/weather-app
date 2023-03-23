@@ -58,7 +58,8 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 500px;
+  width: 393px;
+  height: 852px;
   margin: auto;
   border-radius: 32px;
   position: relative;
@@ -109,29 +110,6 @@ body {
   font-size: 20px;
   line-height: 27px;
 }
-.app__switches {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  width: 310px;
-  height: 60px;
-  border: 1px solid #FFF;
-  border-radius: 15px;
-  margin: 40px 0 40px;
-}
-.app__switch {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-  width: 100%;
-  border-radius: 15px;
-  cursor: pointer;
-}
-.app__switch-active {
-  background-color: #4084DF;
-  opacity: 1;
-}
 .app__central-icon {
   width: 128px;
   height: 128px;
@@ -158,8 +136,32 @@ body {
 .app__indicators svg {
   width: 24px;
 }
+.app__indicators.night path {
+  fill: #fff;
+}
 .app__indicators p {
   margin-top: 10px;
+}
+
+.switches {
+  width: 248px;
+  display: flex;
+  background-color: rgba(64, 132, 223, 0.2);
+  border-radius: 12px;
+}
+.switches__btn {
+  width: 50%;
+  font-size: 16px;
+  text-align: center;
+  padding: 16px 20px 16px;
+  color: #fff;
+  opacity: 0.8;
+  border-radius: 12px;
+}
+.switches__btn.active {
+  background-color: #4084DF;
+  opacity: 1;
+  font-weight: 500;
 }
 
 /*# sourceMappingURL=style.css.map */
