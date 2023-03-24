@@ -21,7 +21,8 @@ const forecastWrapper = document.querySelector('.forecast__wrapper');
 const airQualityWrapper = document.querySelector('.air__wrapper');
 
 const start = function() {
-  const place = input.value;
+  // const place = input.value;
+  const place = h1.innerHTML;
   // input.value = h1.innerHTML;
 
   fetch(`http://api.weatherapi.com/v1/forecast.json?key=db66d43c6d024009b4b123828232203&q=${place}&days=3&aqi=yes&alerts=no`)
@@ -92,9 +93,16 @@ for (let i = 0; i < airQualityArrKeys.length; i++) {
   });
 }
 
+// start function on button click
+
 form.addEventListener('submit', function(e) {
   e.preventDefault();
-start();
+  // forecast.innerHTML = null;             !!!!!!!!!!!!!!
+  start();
+  edit.classList.add('active');
+  h1.innerHTML = input.value;
+  form.classList.remove('active');
+
 })
 
 // insert Warsaw data on load
@@ -120,5 +128,6 @@ switcher1.addEventListener("click", function() {
 // edit button
 
 edit.addEventListener("click", function() {
-  form.classList.remove('app__inactive');
+  form.classList.add('active');
+  edit.classList.remove('active');
 })

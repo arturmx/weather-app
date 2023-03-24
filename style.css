@@ -88,10 +88,13 @@ body {
   display: block;
 }
 .app__form {
-  display: flex;
+  display: none;
   justify-content: center;
   align-items: center;
   margin-top: 60px;
+}
+.app__form.active {
+  display: flex;
 }
 .app__input {
   font-size: 32px;
