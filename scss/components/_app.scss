@@ -29,6 +29,7 @@ color: #FFF;
     &__edit {
         margin-top: 10px;
         cursor: pointer;
+        display: none;
     }
     &__form {
         display: flex;
@@ -110,9 +111,5 @@ color: #FFF;
         p {
             margin-top: 10px;
         }
-    }
-
-    &__inactive {
-        display: none;
     }
 }

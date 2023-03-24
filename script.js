@@ -18,14 +18,13 @@ const switcher2 = document.querySelector('#switcher2');
 const airQuality = document.querySelector('.air');
 const forecast = document.querySelector('.forecast');
 const forecastWrapper = document.querySelector('.forecast__wrapper');
+const airQualityWrapper = document.querySelector('.air__wrapper');
 
-form.addEventListener('submit', function(e) {
-  e.preventDefault();
-
+const start = function() {
   const place = input.value;
   // input.value = h1.innerHTML;
 
-  fetch(`http://api.weatherapi.com/v1/forecast.json?key=db66d43c6d024009b4b123828232203&q=${place}&days=2&aqi=yes&alerts=no`)
+  fetch(`http://api.weatherapi.com/v1/forecast.json?key=db66d43c6d024009b4b123828232203&q=${place}&days=3&aqi=yes&alerts=no`)
   .then((response) => response.json())
   .then((data) => {
     console.log(data);
@@ -42,6 +41,7 @@ form.addEventListener('submit', function(e) {
     state.innerHTML = data.current.condition.text;
     stateImg.src = data.current.condition.icon;
 
+// forecast
 
     forecastArr.forEach(function(day) {
       const f_day = document.createElement('div');
@@ -65,8 +65,40 @@ form.addEventListener('submit', function(e) {
       forecastWrapper.appendChild(f_day);
     })
 
+// const airQualityArrKeys = Object.keys(data.current.air_quality);
+const airQualityArrKeys = ['Carbon Monoxide','Ozone','Nitrogen dioxide','Sulphur dioxide','PM2.5','PM10','US-EPA Index','UK Defra Index'];
+const airQualityArrValues = Object.values(data.current.air_quality);
+
+for (let i = 0; i < airQualityArrKeys.length; i++) {
+  const a_item = document.createElement('div');
+  a_item.classList.add('air__item');
+
+  const a_name = document.createElement('span');
+  a_name.classList.add('air__item-name');
+  a_name.innerHTML = airQualityArrKeys[i];
+
+  const a_value = document.createElement('span');
+  a_value.innerHTML = Math.round(airQualityArrValues[i] * 100) / 100;
+
+  const a_line = document.createElement('div');
+  a_line.classList.add('air__line');
+
+  a_item.appendChild(a_name);
+  a_item.appendChild(a_value);
+  airQualityWrapper.appendChild(a_item);
+  a_item.insertAdjacentElement('afterend', a_line);
+  }
   });
+}
+
+form.addEventListener('submit', function(e) {
+  e.preventDefault();
+start();
 })
+
+
+window.addEventListener("load", start())
+
 
 // edit.addEventListener("click", function() {
 //   form.classList.remove('app__inactive');
