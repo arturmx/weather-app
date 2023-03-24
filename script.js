@@ -65,7 +65,8 @@ const start = function() {
       forecastWrapper.appendChild(f_day);
     })
 
-// const airQualityArrKeys = Object.keys(data.current.air_quality);
+// air quality
+
 const airQualityArrKeys = ['Carbon Monoxide','Ozone','Nitrogen dioxide','Sulphur dioxide','PM2.5','PM10','US-EPA Index','UK Defra Index'];
 const airQualityArrValues = Object.values(data.current.air_quality);
 
@@ -96,13 +97,11 @@ form.addEventListener('submit', function(e) {
 start();
 })
 
+// insert Warsaw data on load
 
 window.addEventListener("load", start())
 
-
-// edit.addEventListener("click", function() {
-//   form.classList.remove('app__inactive');
-// })
+// forecast / air quality switches
 
 switcher2.addEventListener("click", function() {
   forecast.classList.remove('active');
@@ -116,4 +115,10 @@ switcher1.addEventListener("click", function() {
   airQuality.classList.remove('active');
   switcher1.classList.add('active');
   switcher2.classList.remove('active');
+})
+
+// edit button
+
+edit.addEventListener("click", function() {
+  form.classList.remove('app__inactive');
 })

@@ -84,6 +84,9 @@ body {
   cursor: pointer;
   display: none;
 }
+.app__edit.active {
+  display: block;
+}
 .app__form {
   display: flex;
   justify-content: center;
