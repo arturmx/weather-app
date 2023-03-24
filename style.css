@@ -101,17 +101,18 @@ body {
   outline: none;
 }
 .app__go {
-  height: 57px;
+  height: 59px;
   width: 57px;
   border: 1px solid #FFF;
-  display: flex;
   border-radius: 0 15px 15px 0;
+  display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  background-color: transparent;
 }
-.app__go svg {
-  height: 50px;
+.app__go img {
+  width: 70%;
 }
 .app__localtime {
   font-size: 20px;
@@ -170,22 +171,23 @@ body {
   opacity: 0.8;
   border-radius: 12px;
   font-weight: 400;
+  cursor: pointer;
 }
 .switches__btn.active {
   background-color: #4084DF;
   opacity: 1;
 }
 
-.bottom {
+.forecast {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.bottom__h1 {
+.forecast__h1 {
   font-size: 25px;
   line-height: 34px;
 }
-.bottom__wrapper {
+.forecast__wrapper {
   margin-top: 20px;
   display: flex;
   justify-content: space-between;
@@ -194,21 +196,43 @@ body {
   background-color: rgba(64, 132, 223, 0.2);
   padding: 20px 17px;
 }
-.bottom__day {
+.forecast__day {
   width: 33%;
   border-radius: 3px;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.bottom__temp {
+.forecast__temp {
   font-size: 22px;
   font-weight: 400;
   line-height: 31px;
   color: #FFF;
 }
-.bottom__date {
+.forecast__date {
   margin-bottom: 20px;
+}
+
+.air {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.air__h1 {
+  font-size: 25px;
+  line-height: 34px;
+}
+.air__wrapper {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  width: 428px;
+  border-radius: 25px;
+  background-color: rgba(64, 132, 223, 0.2);
+  padding: 20px 17px;
+  gap: 10px;
 }
 
 /*# sourceMappingURL=style.css.map */

@@ -13,17 +13,20 @@ const state = document.querySelector('.app__state');
 const stateImg = document.querySelector('.app__central-icon');
 const h1 = document.querySelector('.app__h1');
 const edit = document.querySelector('.app__edit');
-const futureDate1 = document.querySelector('.bottom__date1');
-const futureDate2 = document.querySelector('.bottom__date2');
-const futureDate3 = document.querySelector('.bottom__date3');
+const switcher1 = document.querySelector('#switcher1');
+const switcher2 = document.querySelector('#switcher2');
+const forecast = document.querySelector('.forecast');
+const futureDate1 = document.querySelector('.forecast__date1');
+const futureDate2 = document.querySelector('.forecast__date2');
+const futureDate3 = document.querySelector('.forecast__date3');
 
-const futureIcon1 = document.querySelector('.bottom__icon1');
-const futureIcon2 = document.querySelector('.bottom__icon2');
-const futureIcon3 = document.querySelector('.bottom__icon3');
+const futureIcon1 = document.querySelector('.forecast__icon1');
+const futureIcon2 = document.querySelector('.forecast__icon2');
+const futureIcon3 = document.querySelector('.forecast__icon3');
 
-const futureTemp1 = document.querySelector('.bottom__temp1');
-const futureTemp2 = document.querySelector('.bottom__temp2');
-const futureTemp3 = document.querySelector('.bottom__temp3');
+const futureTemp1 = document.querySelector('.forecast__temp1');
+const futureTemp2 = document.querySelector('.forecast__temp2');
+const futureTemp3 = document.querySelector('.forecast__temp3');
 
 form.addEventListener('submit', function(e) {
   e.preventDefault();
@@ -58,6 +61,20 @@ form.addEventListener('submit', function(e) {
   });
 })
 
-edit.addEventListener("click", function() {
-  form.classList.remove('app__inactive');
+// edit.addEventListener("click", function() {
+//   form.classList.remove('app__inactive');
+// })
+
+switcher2.addEventListener("click", function() {
+  forecast.classList.remove('forecast');
+  forecast.classList.add('app__inactive');
+  switcher1.classList.remove('active');
+  switcher2.classList.add('active');
+})
+
+switcher1.addEventListener("click", function() {
+  forecast.classList.add('forecast');
+  forecast.classList.remove('app__inactive');
+  switcher1.classList.add('active');
+  switcher2.classList.remove('active');
 })

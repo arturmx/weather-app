@@ -51,17 +51,18 @@ color: #FFF;
     }
 
     &__go {
-        height: 57px;
+        height: 59px;
         width: 57px;
         border: 1px solid #FFF;
-        display: flex;
         border-radius: 0 15px 15px 0;
+        display: flex;
         justify-content: center;
         align-items: center;
         cursor: pointer;
+        background-color: transparent;
 
-        svg {
-            height: 50px;
+        img {
+            width: 70%;
         }
     }
 
