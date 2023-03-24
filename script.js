@@ -15,18 +15,9 @@ const h1 = document.querySelector('.app__h1');
 const edit = document.querySelector('.app__edit');
 const switcher1 = document.querySelector('#switcher1');
 const switcher2 = document.querySelector('#switcher2');
+const airQuality = document.querySelector('.air');
 const forecast = document.querySelector('.forecast');
-const futureDate1 = document.querySelector('.forecast__date1');
-const futureDate2 = document.querySelector('.forecast__date2');
-const futureDate3 = document.querySelector('.forecast__date3');
-
-const futureIcon1 = document.querySelector('.forecast__icon1');
-const futureIcon2 = document.querySelector('.forecast__icon2');
-const futureIcon3 = document.querySelector('.forecast__icon3');
-
-const futureTemp1 = document.querySelector('.forecast__temp1');
-const futureTemp2 = document.querySelector('.forecast__temp2');
-const futureTemp3 = document.querySelector('.forecast__temp3');
+const forecastWrapper = document.querySelector('.forecast__wrapper');
 
 form.addEventListener('submit', function(e) {
   e.preventDefault();
@@ -34,13 +25,14 @@ form.addEventListener('submit', function(e) {
   const place = input.value;
   // input.value = h1.innerHTML;
 
-  fetch(`http://api.weatherapi.com/v1/forecast.json?key=db66d43c6d024009b4b123828232203&q=${place}&days=3&aqi=yes&alerts=no`)
+  fetch(`http://api.weatherapi.com/v1/forecast.json?key=db66d43c6d024009b4b123828232203&q=${place}&days=2&aqi=yes&alerts=no`)
   .then((response) => response.json())
   .then((data) => {
     console.log(data);
 
     const date = new Date(data.location.localtime);
     const dateString = `${date.getDay()} ${monthNames[date.getMonth()]}, ${date.getFullYear()}`;
+    const forecastArr = data.forecast.forecastday;
     
     localTime.innerHTML = dateString;
     temp.innerHTML = data.current.temp_c + '℃';
@@ -49,15 +41,30 @@ form.addEventListener('submit', function(e) {
     humidity.innerHTML = data.current.humidity + ' %';
     state.innerHTML = data.current.condition.text;
     stateImg.src = data.current.condition.icon;
-    futureDate1.innerHTML = data.forecast.forecastday[0].date;
-    futureDate2.innerHTML = data.forecast.forecastday[1].date;
-    futureDate3.innerHTML = data.forecast.forecastday[2].date;
-    futureTemp1.innerHTML = data.forecast.forecastday[0].day.avgtemp_c + '℃';
-    futureTemp2.innerHTML = data.forecast.forecastday[1].day.avgtemp_c + '℃';
-    futureTemp3.innerHTML = data.forecast.forecastday[2].day.avgtemp_c + '℃';
-    futureIcon1.src= data.forecast.forecastday[0].day.condition.icon;
-    futureIcon2.src= data.forecast.forecastday[1].day.condition.icon;
-    futureIcon3.src= data.forecast.forecastday[2].day.condition.icon;
+
+
+    forecastArr.forEach(function(day) {
+      const f_day = document.createElement('div');
+      f_day.classList.add('forecast__day');
+
+      const f_date = document.createElement('p');
+      f_date.classList.add('forecast__date');
+      f_date.innerHTML = day.date;
+
+      const f_temp = document.createElement('p');
+      f_temp.classList.add('forecast__daytemp');
+      f_temp.innerHTML = day.day.avgtemp_c + '℃';
+
+      const img = document.createElement('img');
+      img.src = day.day.condition.icon;
+
+      f_day.appendChild(f_date);
+      f_day.appendChild(f_temp);
+      f_day.appendChild(img);
+
+      forecastWrapper.appendChild(f_day);
+    })
+
   });
 })
 
@@ -66,15 +73,15 @@ form.addEventListener('submit', function(e) {
 // })
 
 switcher2.addEventListener("click", function() {
-  forecast.classList.remove('forecast');
-  forecast.classList.add('app__inactive');
+  forecast.classList.remove('active');
+  airQuality.classList.add('active');
   switcher1.classList.remove('active');
   switcher2.classList.add('active');
 })
 
 switcher1.addEventListener("click", function() {
-  forecast.classList.add('forecast');
-  forecast.classList.remove('app__inactive');
+  forecast.classList.add('active');
+  airQuality.classList.remove('active');
   switcher1.classList.add('active');
   switcher2.classList.remove('active');
 })

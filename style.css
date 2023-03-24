@@ -125,7 +125,7 @@ body {
 }
 .app__temperature {
   font-size: 80px;
-  font-weight: 800;
+  font-weight: 500;
   line-height: 109px;
 }
 .app__state {
@@ -179,9 +179,12 @@ body {
 }
 
 .forecast {
-  display: flex;
+  display: none;
   flex-direction: column;
   align-items: center;
+}
+.forecast.active {
+  display: flex;
 }
 .forecast__h1 {
   font-size: 25px;
@@ -214,9 +217,12 @@ body {
 }
 
 .air {
-  display: flex;
+  display: none;
   flex-direction: column;
   align-items: center;
+}
+.air.active {
+  display: flex;
 }
 .air__h1 {
   font-size: 25px;
