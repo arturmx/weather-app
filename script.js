@@ -1,5 +1,4 @@
 const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-const weekDays = ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"];
 
 const form = document.querySelector('.app__form');
 const input = document.querySelector('.app__input');
@@ -25,7 +24,7 @@ const start = function() {
   const place = h1.innerHTML;
   // input.value = h1.innerHTML;
 
-  fetch(`http://api.weatherapi.com/v1/forecast.json?key=db66d43c6d024009b4b123828232203&q=${place}&days=3&aqi=yes&alerts=no`)
+  fetch(`http://api.weatherapi.com/v1/forecast.json?key=db66d43c6d024009b4b123828232203&q=${place}&days=4&aqi=yes&alerts=no`)
   .then((response) => response.json())
   .then((data) => {
     console.log(data);
@@ -40,7 +39,7 @@ const start = function() {
     pressure.innerHTML = data.current.pressure_mb + ' hpa';
     humidity.innerHTML = data.current.humidity + ' %';
     state.innerHTML = data.current.condition.text;
-    stateImg.src = data.current.condition.icon;
+    stateImg.src = 'https:' + data.current.condition.icon;
 
 // forecast
 
@@ -48,16 +47,21 @@ const start = function() {
       const f_day = document.createElement('div');
       f_day.classList.add('forecast__day');
 
+//convert date to day of the week name
+
+let mydate = new Date(day.date);
+let myday = mydate.toLocaleString('en-us', {weekday: 'long'});
+
       const f_date = document.createElement('p');
       f_date.classList.add('forecast__date');
-      f_date.innerHTML = day.date;
+      f_date.innerHTML = myday;
 
       const f_temp = document.createElement('p');
       f_temp.classList.add('forecast__daytemp');
       f_temp.innerHTML = day.day.avgtemp_c + '℃';
 
       const img = document.createElement('img');
-      img.src = day.day.condition.icon;
+      img.src = 'https:' + day.day.condition.icon;
 
       f_day.appendChild(f_date);
       f_day.appendChild(f_temp);
@@ -97,15 +101,24 @@ for (let i = 0; i < airQualityArrKeys.length; i++) {
 
 form.addEventListener('submit', function(e) {
   e.preventDefault();
-  // forecast.innerHTML = null;             !!!!!!!!!!!!!!
+  // forecastWrapper.innerHTML = null;          !!!!!!!!!!!!!
   start();
   edit.classList.add('active');
   h1.innerHTML = input.value;
   form.classList.remove('active');
 
-})
+  // "copy" bug fix:             !!!!!!!!!!!!!!!!!!!!!!!!!!
 
-// insert Warsaw data on load
+//   let f_children = Array.from(forecastWrapper.children);
+
+//   // console.log(f_children.slice(3));
+//   if (f_children.length > 0){
+//     forecastWrapper.innerHTML = f_children.slice(3);
+// }
+
+});
+
+// display Warsaw data on load
 
 window.addEventListener("load", start())
 

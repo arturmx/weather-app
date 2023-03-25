@@ -210,6 +210,9 @@ body {
   flex-direction: column;
   align-items: center;
 }
+.forecast__day:nth-child(1) {
+  display: none;
+}
 .forecast__temp {
   font-size: 22px;
   font-weight: 400;
