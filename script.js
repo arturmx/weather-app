@@ -39,13 +39,13 @@ const getWeather = function() {
     state.innerHTML = data.current.condition.text;
     stateImg.src = 'https:' + data.current.condition.icon;
 
-    // recast
+    // forecast
 
     forecastArr.forEach(function(day) {
       const f_day = document.createElement('div');
       f_day.classList.add('forecast__day');
 
-      // nvert date to day of the week name
+      // convert date to day of the week name
 
       let mydate = new Date(day.date);
       let myday = mydate.toLocaleString('en-us', {weekday: 'long'});
@@ -98,6 +98,7 @@ const getWeather = function() {
 form.addEventListener('submit', function(e) {
   e.preventDefault();
   forecastWrapper.innerHTML = null;
+  airQualityWrapper.innerHTML = null;
   getWeather();
   edit.classList.add('active');
   form.classList.remove('active');
