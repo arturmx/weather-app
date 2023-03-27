@@ -19,10 +19,8 @@ const forecast = document.querySelector('.forecast');
 const forecastWrapper = document.querySelector('.forecast__wrapper');
 const airQualityWrapper = document.querySelector('.air__wrapper');
 
-const start = function() {
-  // const place = input.value;
-  const place = h1.innerHTML;
-  // input.value = h1.innerHTML;
+const getWeather = function() {
+  const place = input.value;
 
   fetch(`https://api.weatherapi.com/v1/forecast.json?key=db66d43c6d024009b4b123828232203&q=${place}&days=4&aqi=yes&alerts=no`)
   .then((response) => response.json())
@@ -30,7 +28,7 @@ const start = function() {
     console.log(data);
 
     const date = new Date(data.location.localtime);
-    const dateString = `${date.getDay()} ${monthNames[date.getMonth()]}, ${date.getFullYear()}`;
+    const dateString = `${date.getDate()} ${monthNames[date.getMonth()]}, ${date.getFullYear()}`;
     const forecastArr = data.forecast.forecastday;
     
     localTime.innerHTML = dateString;
@@ -41,16 +39,16 @@ const start = function() {
     state.innerHTML = data.current.condition.text;
     stateImg.src = 'https:' + data.current.condition.icon;
 
-// forecast
+    // recast
 
     forecastArr.forEach(function(day) {
       const f_day = document.createElement('div');
       f_day.classList.add('forecast__day');
 
-//convert date to day of the week name
+      // nvert date to day of the week name
 
-let mydate = new Date(day.date);
-let myday = mydate.toLocaleString('en-us', {weekday: 'long'});
+      let mydate = new Date(day.date);
+      let myday = mydate.toLocaleString('en-us', {weekday: 'long'});
 
       const f_date = document.createElement('p');
       f_date.classList.add('forecast__date');
@@ -70,30 +68,28 @@ let myday = mydate.toLocaleString('en-us', {weekday: 'long'});
       forecastWrapper.appendChild(f_day);
     })
 
-// air quality
+    // air quality
 
-const airQualityArrKeys = ['Carbon Monoxide','Ozone','Nitrogen dioxide','Sulphur dioxide','PM2.5','PM10','US-EPA Index','UK Defra Index'];
-const airQualityArrValues = Object.values(data.current.air_quality);
+    const airQualityArrKeys = ['Carbon Monoxide','Ozone','Nitrogen dioxide','Sulphur dioxide','PM2.5','PM10','US-EPA Index','UK Defra Index'];
+    const airQualityArrValues = Object.values(data.current.air_quality);
 
-for (let i = 0; i < airQualityArrKeys.length; i++) {
-  const a_item = document.createElement('div');
-  a_item.classList.add('air__item');
+    for (let i = 0; i < airQualityArrKeys.length; i++) {
+      const a_item = document.createElement('div');
+      a_item.classList.add('air__item');
 
-  const a_name = document.createElement('span');
-  a_name.classList.add('air__item-name');
-  a_name.innerHTML = airQualityArrKeys[i];
+      const a_name = document.createElement('span');
+      a_name.classList.add('air__item-name');
+      a_name.innerHTML = airQualityArrKeys[i];
 
-  const a_value = document.createElement('span');
-  a_value.innerHTML = Math.round(airQualityArrValues[i] * 100) / 100;
+      const a_value = document.createElement('span');
+      a_value.innerHTML = Math.round(airQualityArrValues[i] * 100) / 100;
 
-  const a_line = document.createElement('div');
-  a_line.classList.add('air__line');
+      a_item.appendChild(a_name);
+      a_item.appendChild(a_value);
+      airQualityWrapper.appendChild(a_item);
+    }
 
-  a_item.appendChild(a_name);
-  a_item.appendChild(a_value);
-  airQualityWrapper.appendChild(a_item);
-  a_item.insertAdjacentElement('afterend', a_line);
-  }
+    h1.innerHTML = input.value;
   });
 }
 
@@ -101,26 +97,15 @@ for (let i = 0; i < airQualityArrKeys.length; i++) {
 
 form.addEventListener('submit', function(e) {
   e.preventDefault();
-  // forecastWrapper.innerHTML = null;          !!!!!!!!!!!!!
-  start();
+  forecastWrapper.innerHTML = null;
+  getWeather();
   edit.classList.add('active');
-  h1.innerHTML = input.value;
   form.classList.remove('active');
-
-  // "copy" bug fix:             !!!!!!!!!!!!!!!!!!!!!!!!!!
-
-//   let f_children = Array.from(forecastWrapper.children);
-
-//   // console.log(f_children.slice(3));
-//   if (f_children.length > 0){
-//     forecastWrapper.innerHTML = f_children.slice(3);
-// }
-
 });
 
 // display Warsaw data on load
 
-window.addEventListener("load", start())
+window.addEventListener("load", getWeather);
 
 // forecast / air quality switches
 

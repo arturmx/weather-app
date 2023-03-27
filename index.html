@@ -13,15 +13,16 @@
 </head>
 <body>
   <section class="app">
-    <img src="./assets/night-bg.png" class="app__bg"/>
     <form class="app__form">
       <input class="app__input" type="text" placeholder="Enter your city" value="Warsaw">
       <button type="submit" class="app__go">
         <img src="./assets/arrow.png" />
       </button>
     </form>
-    <h1 class="app__h1">Warsaw</h1>
-    <img class="app__edit active" src="./assets/edit-24.png" />
+    <div class="app__h1-wrapper">
+      <h1 class="app__h1"></h1>
+      <img class="app__edit active" src="./assets/edit-24.png" />
+    </div>
     <p class="app__localtime"></p>
     <div class="switches">
       <div id="switcher1" class="switches__btn active">Forecast</div>
